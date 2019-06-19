@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Calculator with simple functions</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<h1>Form:</h1>
+<form action="#" th:action="@{/calculator}" th:object="${calculationModel}" method="POST">
+
+    <div class="field">
+        <label>Name:</label>
+        <input type="text" th:field="*{a}">
+        <span th:if="${#fields.hasErrors('a')}" th:errors="*{a}">a Error</span>
+    </div>
+
+    <div class="field">
+        <label>Name:</label>
+        <input type="text" th:field="*{b}">
+        <span th:if="${#fields.hasErrors('b')}" th:errors="*{b}">b Error</span>
+    </div>
+
+    <p>
+    <p>Plus:</p>
+    <input type="submit" class="button" name="sum" value="+"/>
+    <p>Minus:</p>
+    <input type="submit" class="button" name="sub" value="-"/>
+    <p>Multiply:</p>
+    <input type="submit" class="button" name="mult" value="*"/>
+    <p>Divide:</p>
+    <input type="submit" class="button" name="div" value="/"/>
+    </p>
+</form>
+
+
+
+<h1>Result calculation</h1>
+<p th:text="'result is: ' + ${result}"/>
+</body>
+</html>
