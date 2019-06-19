@@ -10,9 +10,11 @@ import javax.validation.constraints.NotNull;
 public class CalculationModel {
 
     private String operation;
+    @Digits(integer=1, fraction=1)
     @Max(5)
     private int a;
-
+    @Digits(integer=1, fraction=1)
+    @Max(4)
     private int b;
 
     public CalculationModel() {
