@@ -4,31 +4,17 @@ package com.project.calculator.controller;
 import com.project.calculator.model.CalculationModel;
 import com.project.calculator.service.Calculation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.format.FormatterRegistry;
-import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.MessageCodesResolver;
-import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
-import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
-import org.springframework.web.servlet.HandlerExceptionResolver;
-import org.springframework.web.servlet.config.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @org.springframework.stereotype.Controller
 
-public class Controller{
-
-
-
+public class Controller {
 
     CalculationModel calculationModel = new CalculationModel();
 
