@@ -25,95 +25,9 @@ import java.util.List;
 
 @org.springframework.stereotype.Controller
 
-public class Controller implements WebMvcConfigurer {
+public class Controller{
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/calculator").setViewName("calculator");
-    }
 
-    @Override
-    public void configureViewResolvers(ViewResolverRegistry viewResolverRegistry) {
-
-    }
-
-    @Override
-    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> list) {
-
-    }
-
-    @Override
-    public void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> list) {
-
-    }
-
-    @Override
-    public void configureMessageConverters(List<HttpMessageConverter<?>> list) {
-
-    }
-
-    @Override
-    public void extendMessageConverters(List<HttpMessageConverter<?>> list) {
-
-    }
-
-    @Override
-    public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> list) {
-
-    }
-
-    @Override
-    public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> list) {
-
-    }
-
-    @Override
-    public Validator getValidator() {
-        return null;
-    }
-
-    @Override
-    public MessageCodesResolver getMessageCodesResolver() {
-        return null;
-    }
-
-    @Override
-            public void configurePathMatch(PathMatchConfigurer pathMatchConfigurer){}
-
-    @Override
-    public void configureContentNegotiation(ContentNegotiationConfigurer contentNegotiationConfigurer) {
-
-    }
-
-    @Override
-    public void configureAsyncSupport(AsyncSupportConfigurer asyncSupportConfigurer) {
-
-    }
-
-    @Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer defaultServletHandlerConfigurer) {
-
-    }
-
-    @Override
-    public void addFormatters(FormatterRegistry formatterRegistry) {
-
-    }
-
-    @Override
-    public void addInterceptors(InterceptorRegistry interceptorRegistry) {
-
-    }
-
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry resourceHandlerRegistry) {
-
-    }
-
-    @Override
-    public void addCorsMappings(CorsRegistry corsRegistry) {
-
-    }
 
 
     CalculationModel calculationModel = new CalculationModel();
@@ -129,31 +43,42 @@ public class Controller implements WebMvcConfigurer {
     }
 
     @RequestMapping(value = "/calculator", params = "sum", method = RequestMethod.POST)
-    public String sum(@Valid @ModelAttribute("calculationModel") CalculationModel calculationModel, Model model) {
-        model.addAttribute("result", calculation.sum(calculationModel));
-        return "calculator";
+    public String sum(@Valid @ModelAttribute("calculationModel") CalculationModel calculationModel, BindingResult bindingResult, Model model) {
+        if (!bindingResult.hasErrors()) {
+            model.addAttribute("result", calculation.sum(calculationModel));
+            return "calculator";
+        } else
+            return "calculator";
     }
 
     @RequestMapping(value = "/calculator", params = "sub", method = RequestMethod.POST)
     public String sub(@Valid @ModelAttribute("calculationModel") CalculationModel calculationModel, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
+        if (!bindingResult.hasErrors()) {
+            model.addAttribute("result", calculation.sub(calculationModel));
             return "calculator";
         } else
-            model.addAttribute("result", calculationModel.getOperation());
-        return "calculator";
+            return "calculator";
 
     }
 
     @RequestMapping(value = "/calculator", params = "mult", method = RequestMethod.POST)
-    public String mult(@ModelAttribute("calculationModel") CalculationModel calculationModel, Model model) {
-        model.addAttribute("result", calculation.mult(calculationModel));
-        return "calculator";
+    public String mult(@Valid @ModelAttribute("calculationModel") CalculationModel calculationModel, BindingResult bindingResult, Model model) {
+        if (!bindingResult.hasErrors()) {
+            model.addAttribute("result", calculation.mult(calculationModel));
+            return "calculator";
+        } else
+            return "calculator";
+
     }
 
     @RequestMapping(value = "/calculator", params = "div", method = RequestMethod.POST)
-    public String div(@ModelAttribute("calculationModel") CalculationModel calculationModel, Model model) {
-        model.addAttribute("result", calculation.div(calculationModel));
-        return "calculator";
+    public String div(@Valid @ModelAttribute("calculationModel") CalculationModel calculationModel, BindingResult bindingResult, Model model) {
+        if (!bindingResult.hasErrors()) {
+            model.addAttribute("result", calculation.div(calculationModel));
+            return "calculator";
+        } else
+            return "calculator";
+
     }
 
 }
