@@ -1,6 +1,6 @@
 package com.project.calculator.service;
 
-import com.service.calculator.model.CalculationModel;
+import com.project.calculator.model.CalculationModel;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
