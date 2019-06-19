@@ -10,9 +10,9 @@ import javax.validation.constraints.NotNull;
 public class CalculationModel {
 
     private String operation;
-    @Min(7)
+    @Max(5)
     private int a;
-    @Max(8)
+
     private int b;
 
     public CalculationModel() {

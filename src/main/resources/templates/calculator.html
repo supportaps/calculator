@@ -8,34 +8,31 @@
 
 <h1>Form:</h1>
 <form action="#" th:action="@{/calculator}" th:object="${calculationModel}" method="POST">
+<table>
+    <tr>
+        <td>Name:</td>
+        <td> <input type="text" th:field="*{a}"></td>
+        <td th:if="${#fields.hasErrors('a')}" th:errors="*{a}">a Error</td>
+    </tr>
 
-    <div class="field">
-        <label>Name:</label>
-        <input type="text" th:field="*{a}">
-        <span th:if="${#fields.hasErrors('a')}" th:errors="*{a}">a Error</span>
-    </div>
+    <tr>
+        <td>Name:</td>
+        <td> <input type="text" th:field="*{b}"></td>
+        <td th:if="${#fields.hasErrors('b')}" th:errors="*{b}">a Error</td>
+    </tr>
 
-    <div class="field">
-        <label>Name:</label>
-        <input type="text" th:field="*{b}">
-        <span th:if="${#fields.hasErrors('b')}" th:errors="*{b}">b Error</span>
-    </div>
+    <tr>
+    <td><button type="submit" name="sum" value="+">Plus:</button></td>
+    <td><button type="submit" name="sub" value="-">Minus:</button></td>
+    <td><button type="submit" name="mult" value="*">Multiply:</button></td>
+    <td><button type="submit" name="div" value="/">Divide:</button></td>
+    </tr>
 
-    <p>
-    <p>Plus:</p>
-    <input type="submit" class="button" name="sum" value="+"/>
-    <p>Minus:</p>
-    <input type="submit" class="button" name="sub" value="-"/>
-    <p>Multiply:</p>
-    <input type="submit" class="button" name="mult" value="*"/>
-    <p>Divide:</p>
-    <input type="submit" class="button" name="div" value="/"/>
-    </p>
+    <tr><td th:text="'result is: ' + ${result}">Result calculation</td></tr>
+
+
+</table>
 </form>
 
-
-
-<h1>Result calculation</h1>
-<p th:text="'result is: ' + ${result}"/>
 </body>
 </html>
