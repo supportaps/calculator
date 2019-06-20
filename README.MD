@@ -14,3 +14,7 @@ Maven
 # Instructions how to run
 
 Clone a project from github by the reference, add dependencies by the Maven and click the run button.
+
+# Reference for browser to test
+
+http://localhost:8080/calculator
